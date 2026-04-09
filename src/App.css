@@ -1,67 +1,86 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Переменные для удобства */
+:root {
+  --primary-color: #4f46e5; /* Indigo */
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --nav-height: 70px;
 }
 
-.tutorial {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  margin-top: 2rem;
-  transition: transform 0.2s;
+.app-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
 }
 
-.align-center {
+.main-header {
+  height: var(--nav-height);
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   display: flex;
-  flex-direction: column; /* По умолчанию для мобилок в колонку */
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  gap: 2rem;
   align-items: center;
-  gap: 1rem;
 }
 
-/* Медиа-запрос для планшетов и ПК */
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  .align-center {
-    flex-direction: row; /* На больших экранах в ряд */
-    justify-content: center;
-  }
-
-  .tutorial {
-    padding: 3rem;
-  }
-}
-
-/* Медиа-запрос для очень маленьких экранов */
-@media (max-width: 480px) {
-  #root {
-    padding: 1rem;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  input {
-    font-size: 0.9rem;
-  }
-}
-
-button {
-  background-color: #6366f1;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
   border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
 }
 
-button:hover {
-  background-color: #4f46e5;
+.nav-link:hover {
+  color: var(--primary-color);
+  background: #f1f5f9;
+}
+
+.nav-link.active {
+  color: var(--primary-color);
+  background: #eef2ff;
+}
+
+.nav-icon {
+  display: flex;
+  font-size: 24px; /* По умолчанию из IconContext в App.tsx будет 32px */
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 600px) {
+  .nav-text {
+    display: none; /* Прячем текст, оставляем только иконки */
+  }
+  .nav-container {
+    gap: 1rem;
+  }
+  .main-header {
+    bottom: 0; /* Переносим навигацию вниз на мобилках */
+    top: auto;
+  }
+}
+
+.content-area {
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

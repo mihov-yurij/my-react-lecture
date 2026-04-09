@@ -1,4 +1,7 @@
-import { useReducer, type FormEvent, type ChangeEvent } from 'react';
+// Добавьте 'type' перед FormEvent для лучшей практики TypeScript
+import { useReducer, type ChangeEvent, type FormEvent } from 'react';
+import Card from '../components/Card';
+
 
 // --- Types ---
 type FormState = {
@@ -11,9 +14,9 @@ type FormState = {
 type FormAction =
 
   | { type: 'SET_FIELD'; field: 'name' | 'email'; value: string }
+  | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'START_SUBMIT' }
 
-  | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'FINISH_SUBMIT' };
 
 // --- Reducer ---
@@ -41,94 +44,61 @@ const useContactForm = () => {
     loading: false,
   });
 
+  // Исправлено: добавлены типы для события
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    dispatch({ type: 'SET_FIELD', field: name as 'name' | 'email', value });
+    dispatch({ 
+      type: 'SET_FIELD', 
+      field: name as 'name' | 'email', 
+      value 
+    });
   };
 
-  const submitForm = async (e: FormEvent) => {
+  const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!state.name || !state.email) {
       return dispatch({ type: 'SET_ERROR', payload: 'All fields are required!' });
     }
 
     dispatch({ type: 'START_SUBMIT' });
-
-    // Имитация API запроса
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    console.log('Form Submitted:', state);
+    await new Promise((res) => setTimeout(res, 1500)); // Имитация API
     dispatch({ type: 'FINISH_SUBMIT' });
-    alert('Success!');
+    alert('Форма отправлена!');
   };
 
   return { ...state, handleChange, submitForm };
 };
 
-// --- Component ---
-export default function Home() {
+export default function HomeWithReducer() {
   const { name, email, error, loading, handleChange, submitForm } = useContactForm();
 
   return (
-    <div className="home-page">
-      <h2>Welcome Home</h2>
-
-      <Card title={loading ? 'Processing...' : 'Contact Us'}>
-        {error && (
-          <div style={{ color: '#d32f2f', marginBottom: '12px', fontSize: '14px' }}>
-            ⚠️ {error}
-          </div>
-        )}
-
-        <form onSubmit={submitForm} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+    <div className="home-container">
+      <Card title={loading ? 'Отправка...' : 'Свяжитесь с нами'}>
+        <form onSubmit={submitForm} className="reducer-form">
+          {error && <p className="error-message">{error}</p>}
+          
           <input
             name="name"
-            type="text"
-            placeholder="Your Name"
+            placeholder="Ваше имя"
             value={name}
             onChange={handleChange}
             disabled={loading}
-            style={inputStyle}
           />
           <input
             name="email"
             type="email"
-            placeholder="Email Address"
+            placeholder="Email"
             value={email}
             onChange={handleChange}
             disabled={loading}
-            style={inputStyle}
           />
-          <button 
-            type="submit" 
-            disabled={loading}
-            style={{ padding: '10px', cursor: loading ? 'not-allowed' : 'pointer' }}
-          >
-            {loading ? 'Sending...' : 'Send Message'}
+          
+          <button type="submit" disabled={loading}>
+            {loading ? 'Секунду...' : 'Отправить'}
           </button>
         </form>
       </Card>
     </div>
   );
 }
-
-// Повторяем вспомогательный компонент (в реальном проекте вынесли бы в /components)
-const Card = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section style={{
-    padding: '20px',
-    border: '1px solid #ddd',
-    borderRadius: '12px',
-    background: '#fff',
-    maxWidth: '400px'
-  }}>
-    <h3 style={{ marginTop: 0, color: 'indigo' }}>{title}</h3>
-    {children}
-  </section>
-);
-
-const inputStyle = {
-  padding: '8px',
-  borderRadius: '6px',
-  border: '1px solid #ccc'
-};
