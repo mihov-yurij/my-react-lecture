@@ -1,3 +1,3 @@
 export type Nullable<T> = T | null;
 export type Optional<T> = T | undefined;
-export type CustomAny = any;
+export type CustomAny = unknown;

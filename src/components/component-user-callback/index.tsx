@@ -2,30 +2,34 @@ import { useCallback, useState } from 'react';
 import Search from './Search';
 import { shuffle } from './utils';
 
-const allUsers = ['john', 'alex', 'george', 'simon', 'james'];
+const ALL_USERS = ['john', 'alex', 'george', 'simon', 'james'];
 
-interface DemoProps {}
+export default function Demo() {
+  const [users, setUsers] = useState(ALL_USERS);
 
-export default function Demo({}: DemoProps) {
-  const [users, setUsers] = useState(allUsers);
+  // Оптимизируем поиск: убираем зависимость [users], 
+  // так как поиск всегда идет по исходному массиву ALL_USERS
+  const handleSearch = useCallback((text: string) => {
+    const filteredUsers = ALL_USERS.filter((user) =>
+      user.toLowerCase().includes(text.toLowerCase())
+    );
+    setUsers(filteredUsers);
+  }, []); // Пустой массив зависимостей — функция создается один раз
 
-  const handleSearch = useCallback(
-    (text: string) => {
-      console.log('handleSearch created!', users[0]);
-      const filteredUsers = allUsers.filter((user) => user.includes(text));
-      setUsers(filteredUsers);
-    },
-    [users],
-  );
+  const handleShuffle = () => {
+    setUsers(shuffle([...ALL_USERS])); // Копируем массив перед перемешиванием
+  };
 
   return (
     <div className="tutorial">
-      <div className="align-center mb-2 flex">
-        <button onClick={() => setUsers(shuffle(allUsers))}>Shuffle</button>
+      <div className="align-center mb-2 flex" style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <button onClick={handleShuffle}>Shuffle</button>
 
+        {/* Убедитесь, что в компоненте Search пропс называется onChange */}
         <Search onChange={handleSearch} />
       </div>
-      <ul>
+      
+      <ul style={{ marginTop: '16px' }}>
         {users.map((user) => (
           <li key={user}>{user}</li>
         ))}
