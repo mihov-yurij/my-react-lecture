@@ -106,12 +106,12 @@ export function SearchParamsDemo() {
         <div style={{ flex: 1 }}>
           {currentRole === 'employer' ? (
             <>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Макс. бюджет: {maxSalary} руб.</label>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Макс. бюджет: {maxSalary} $</label>
               <input type="range" min="100000" max="300000" step="10000" value={maxSalary} onChange={(e) => updateFilters('maxSalary', e.target.value)} style={{ width: '100%', accentColor: 'indigo' }} />
             </>
           ) : (
             <>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Желаемая зарплата от: {minSalary} руб.</label>
+              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Желаемая зарплата от: {minSalary} $</label>
               <input type="range" min="100000" max="300000" step="10000" value={minSalary} onChange={(e) => updateFilters('minSalary', e.target.value)} style={{ width: '100%', accentColor: 'indigo' }} />
             </>
           )}
