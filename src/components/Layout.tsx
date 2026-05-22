@@ -1,37 +1,36 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { HiHome, HiBeaker, HiUsers } from 'react-icons/hi'; // Установите npm install react-icons
+import { Outlet, Link } from 'react-router-dom';
 
 export default function Layout() {
-  const { pathname } = useLocation();
-
-  const navItems = [
-    { path: '/', label: 'Главная', icon: <HiHome /> },
-    { path: '/router', label: 'Playground', icon: <HiBeaker /> },
-    { path: '/users/42', label: 'Профиль', icon: <HiUsers /> },
-  ];
-
   return (
-    <div className="app-wrapper">
-      <header className="main-header">
-        <nav className="nav-container">
-          {navItems.map((item) => (
-            <Link 
-              key={item.path} 
-              to={item.path} 
-              className={`nav-link ${pathname === item.path ? 'active' : ''}`}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              <span className="nav-text">{item.label}</span>
-            </Link>
-          ))}
-        </nav>
-      </header>
+    <div className="app-layout">
+      {/* Ваша шапка сайта или меню навигации */}
+      <nav style={{ padding: '1rem', background: '#f5f5f5', display: 'flex', gap: '15px', borderBottom: '1px solid #ddd' }}>
+        <Link to="/" style={{ textDecoration: 'none', color: 'indigo', fontWeight: 'bold' }}>Главная</Link>
+        <Link to="/router" style={{ textDecoration: 'none', color: 'indigo', fontWeight: 'bold' }}>Playground</Link>
+        <Link to="/search-params" style={{ textDecoration: 'none', color: 'indigo', fontWeight: 'bold' }}>Мэтчинг</Link>
+        
+        {/* НОВАЯ КНОПКА ДЛЯ РЕГИСТРАЦИИ */}
+        <Link 
+          to="/register" 
+          style={{ 
+            textDecoration: 'none', 
+            color: 'white', 
+            background: 'indigo', 
+            padding: '5px 12px', 
+            borderRadius: '4px',
+            fontWeight: 'bold',
+            marginLeft: 'auto' // Прижмет кнопку к правому краю меню
+          }}
+        >
+          ➕ Регистрация / Добавить вакансию
+        </Link>
+      </nav>
 
-      <main className="content-area">
-        <div className="container">
-          <Outlet />
-        </div>
+      {/* Контент текущей страницы */}
+      <main className="content" style={{ padding: '20px' }}>
+        <Outlet /> 
       </main>
     </div>
   );
 }
+
