@@ -78,7 +78,7 @@ export function Register() {
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>{role === 'candidate' ? 'Зарплатные ожидания (руб.)' : 'Бюджет вакансии до (руб.)'}:</label>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>{role === 'candidate' ? 'Зарплатные ожидания ($)' : 'Бюджет вакансии до ($)'}:</label>
           <input type="number" value={salary} onChange={e => setSalary(e.target.value)} style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }} />
         </div>
 
