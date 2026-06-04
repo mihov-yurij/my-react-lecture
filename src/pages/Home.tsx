@@ -66,7 +66,7 @@ export default function Home() {
 
         <div className="lg:col-span-5 relative h-[380px] w-full hidden md:block">
           <div className="absolute top-0 right-4 w-72 h-[350px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20">
-            <img src="public/logistic.jpg" alt="Student" className="w-full h-full object-cover" />
+            <img src="public/classification.jpg" alt="Student" className="w-full h-full object-cover" />
           </div>
           <div className="absolute bottom-4 left-4 w-56 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white z-30">
             <img src="public/meeting.jpg" alt="Meeting" className="w-full h-full object-cover" />
