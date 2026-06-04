@@ -43,7 +43,7 @@ export default function Home() {
       {/* HERO SECTION / ГЛАВНЫЙ БАННЕР */}
       <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-7 space-y-6">
-          <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">ОНМУ КАР'ЄРА</span>
+          <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">ОНМУ КАР'ЄРА-ДЕ ТАЛАНТ ЗУСТРІЧАЄ МОЖЛИВІСТЬ</span>
           <h2 className="text-4xl lg:text-5xl font-black text-slate-950 leading-tight">
             Платформа <br />
             <span className="text-blue-600">майбутніх можливостей</span>
@@ -66,10 +66,10 @@ export default function Home() {
 
         <div className="lg:col-span-5 relative h-[380px] w-full hidden md:block">
           <div className="absolute top-0 right-4 w-72 h-[350px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white z-20">
-            <img src="public/classification.jpg" alt="Student" className="w-full h-full object-cover" />
+            <img src="public/meeting.jpg" alt="Student" className="w-full h-full object-cover" />
           </div>
           <div className="absolute bottom-4 left-4 w-56 h-48 rounded-2xl overflow-hidden shadow-xl border-4 border-white z-30">
-            <img src="public/meeting.jpg" alt="Meeting" className="w-full h-full object-cover" />
+            <img src="public/classification.jpg" alt="Meeting" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

@@ -16,6 +16,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #f8fafc; /* slate-50 */
+    font-family: 'Tangerine', serif;
+  font-size: 2rem;
+  text-shadow: 1px 1px 1px #36046b;
 }
 
 /* Стили для кастомного инпута DatePicker */
