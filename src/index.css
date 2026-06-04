@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@import url('https://googleapis.com');
+
+:root {
+  /* Перезаписываем основной sans-шрифт для всего проекта */
+  --font-sans: 'Inter', sans-serif;
+}
+
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }

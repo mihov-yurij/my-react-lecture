@@ -44,10 +44,10 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-7 space-y-6">
           <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">ОНМУ КАР'ЄРА-ДЕ ТАЛАНТ ЗУСТРІЧАЄ МОЖЛИВІСТЬ</span>
-          <h2 className="text-4xl lg:text-5xl font-black text-slate-950 leading-tight">
+          <h1 className="text-5xl lg:text-6xl font-black text-slate-950 py-6 scale-y-[1.5] origin-left leading-[1.4]">
             Платформа <br />
             <span className="text-blue-600">майбутніх можливостей</span>
-          </h2>
+          </h1>
           <p className="text-lg text-slate-600 max-w-xl">
             Ми об'єднуємо талановитих студентів і прогресивні компанії для створення успішного майбутнього.
           </p>
