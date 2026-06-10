@@ -10,8 +10,11 @@
 .app-wrapper {
   min-height: 100vh;
   background-color: var(--bg-color);
+  width: 100%;
+  overflow-x: hidden;
 }
 
+/* Полностью адаптивная шапка */
 .main-header {
   height: var(--nav-height);
   background: var(--card-bg);
@@ -21,8 +24,11 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  padding: 0 1rem;
 }
 
+/* Контейнер навигации — теперь на мобильных он скрыт по умолчанию */
 .nav-container {
   display: flex;
   gap: 2rem;
@@ -53,34 +59,37 @@
 
 .nav-icon {
   display: flex;
-  font-size: 24px; /* По умолчанию из IconContext в App.tsx будет 32px */
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 600px) {
-  .nav-text {
-    display: none; /* Прячем текст, оставляем только иконки */
-  }
-  .nav-container {
-    gap: 1rem;
-  }
-  .main-header {
-    bottom: 0; /* Переносим навигацию вниз на мобилках */
-    top: auto;
-  }
+  font-size: 24px;
 }
 
 .content-area {
   padding: 40px 20px;
+  width: 100%;
 }
 
+/* ИСПРАВЛЕНО: Теперь контейнер полностью резиновый на смартфонах */
 .container {
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
   animation: fadeIn 0.5s ease-in;
+}
+
+/* Адаптивность для мобильных гаджетов */
+@media (max-width: 768px) {
+  /* Убираем десктопное меню в поток скрытия, так как теперь у нас бургер на Tailwind */
+  .nav-container {
+    display: none; 
+  }
+  
+  .content-area {
+    padding: 20px 10px;
+  }
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
