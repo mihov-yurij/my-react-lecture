@@ -40,7 +40,7 @@ export default function Home() {
         {/* Правая часть: На мобилках картинки уходят под текст, на десктопе — абсолютное наложение */}
         <div className="lg:col-span-5 w-full flex flex-col sm:flex-row lg:relative gap-6 lg:gap-0 h-auto lg:h-[380px]">
           <div className="w-full sm:w-1/2 lg:w-72 h-64 sm:h-80 lg:h-[350px] lg:absolute lg:top-0 lg:right-4 rounded-2xl overflow-hidden shadow-xl lg:shadow-2xl border-4 border-white z-20">
-            <img src="./meeting.jpg" alt="Student" className="w-full h-full object-cover" />
+            <img src="public/meeting.jpg" alt="Student" className="w-full h-full object-cover" />
           </div>
           <div className="w-full sm:w-1/2 lg:w-56 h-48 sm:h-80 lg:h-48 lg:absolute lg:bottom-4 lg:left-4 rounded-2xl overflow-hidden shadow-lg lg:shadow-xl border-4 border-white z-30">
             <img src="public/classification.jpg" alt="Meeting" className="w-full h-full object-cover" />
